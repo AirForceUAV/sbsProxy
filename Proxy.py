@@ -24,7 +24,7 @@ def on_message(client, userdata, msg):
 	[eventPool.putRequest(req) for req in requests]
 
 def on_connect(client, userdata, rc):
-	# print("Connected mqtt with result code "+str(rc))
+	print("Connected mqtt with result code "+str(rc))
 	client.subscribe("FlightLog",qos=1)
 
 def push_wrapper(msg):
