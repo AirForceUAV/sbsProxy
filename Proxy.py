@@ -5,8 +5,6 @@ from azure.servicebus import ServiceBusService
 eventPool=threadpool.ThreadPool(1)
 
 def init_sbs():
-	from azure.servicebus import ServiceBusService
-
 	# api_key=dict(namespace='AirForceUAV-ns',policy_name='RootManageSharedAccessKey',policy_secret='3bP2rrfIKLbWkQvSwBEJB1iawxhwUdoBC/lDYbRReSI=',host_base='.servicebus.chinacloudapi.cn')
 	api_key=dict(namespace='airforceuav',policy_name='RootManageSharedAccessKey',policy_secret='mdq0pk8QTd/VXelOfL7VgQtJQ4Xto2HtVs0rfF2JuOE=',host_base='.servicebus.windows.net')
 	sbs = ServiceBusService(api_key["namespace"], shared_access_key_name=api_key["policy_name"], shared_access_key_value=api_key["policy_secret"],host_base=api_key['host_base'])
@@ -18,6 +16,7 @@ def init_mqtt():
 	client.on_message = on_message
 	client.connect("139.217.26.207", 1883)
 	client.loop_start()	
+	return client
 
 def on_message(client, userdata, msg):
 	global eventPool
