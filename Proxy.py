@@ -14,7 +14,7 @@ def init_mqtt():
 	client.reinitialise(client_id='Ran',clean_session=True, userdata=None)
 	client.on_connect = on_connect
 	client.on_message = on_message
-	client.connect("139.217.26.207", 1883)
+	client.connect("101.201.55.168", 1883)
 	client.loop_start()	
 	return client
 
